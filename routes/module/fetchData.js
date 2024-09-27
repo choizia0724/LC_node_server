@@ -5,14 +5,15 @@ const Item = require("./../../models/Item");
 require("dotenv").config();
 
 // MongoDB 연결
-const username = process.env.DB_USERNAME || "admin";
-const password = process.env.DB_PASSWORD || "red0127%21";
+const username = encodeURIComponent(process.env.DB_USERNAME);
+const password = encodeURIComponent(process.env.DB_PASSWORD);
 const dbName = "lostarkDB";
-const host = "svc.sel5.cloudtype.app";
-const port = "30937";
-console.log(`mongodb://${username}:${password}@${host}:${port}/${dbName}`);
+const host = encodeURIComponent(process.env.DB_HIOST);
+const port = encodeURIComponent(process.env.DB_PORT);
 mongoose
-  .connect(`mongodb://${username}:${password}@${host}:${port}`)
+  .connect(
+    `mongodb://${username}:${password}@${host}:${port}/${dbName}?authSource=admin`
+  )
   .then(() => console.log("MongoDB connected"))
   .catch((err) => console.error(err));
 
