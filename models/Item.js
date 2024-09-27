@@ -8,7 +8,7 @@ const ItemSchema = new mongoose.Schema(
     Time: { type: String, required: true },
   },
   {
-    collation: "price_list",
+    collection: "price_list",
   }
 );
 
