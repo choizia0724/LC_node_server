@@ -8,7 +8,7 @@ require("dotenv").config();
 connectDB();
 
 // 매 분마다 데이터 파싱 (node-schedule 사용)
-schedule.scheduleJob("*/1 * * * *", () => {
+schedule.scheduleJob("*/5 * * * *", () => {
   const categoryCode = [50000, 60000, 90000];
   const pageNo = [8, 6, 4];
 
